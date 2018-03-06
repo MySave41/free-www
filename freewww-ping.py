@@ -9,8 +9,8 @@ check = 'vm'
 restart = 'vm.restart'
 
 
-checkurl = 'http://kvm.free-www.ru:1500/vmmgr?out=xml&authinfo={0}:{1}&func={2}&elid={3}'.format(username,password,check,ID)
-keepurl = 'http://kvm.free-www.ru:1500/vmmgr?out=xml&authinfo={0}:{1}&func={2}&elid={3}'.format(username,password,restart,ID)
+checkurl = 'http://kvm1.free-www.ru:1500/vmmgr?out=xml&authinfo={0}:{1}&func={2}&elid={3}'.format(username,password,check,ID)
+keepurl = 'http://kvm1.free-www.ru:1500/vmmgr?out=xml&authinfo={0}:{1}&func={2}&elid={3}'.format(username,password,restart,ID)
 list1 = [('ok', 'vm.restart')]
 
 
@@ -31,7 +31,7 @@ def restart(url = keepurl):
 		r.raise_for_status()
 		r.encoding = r.apparent_encoding
 		khtml = r.text
-		result = re.findall(r'><(.*)/><tparams><elid>237</elid><out>xml</out><func>(.*)</func>',khtml)
+		result = re.findall(r'><(.*)/><tparams><elid>这里填写你的机器ID号</elid><out>xml</out><func>(.*)</func>',khtml)
 		if list1 == result:
 			print("Success Runing!")
 		else:
